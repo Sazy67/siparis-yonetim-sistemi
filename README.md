@@ -112,5 +112,5 @@ npm run build
 Bu proje MIT Lisansı ile lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
 ## İletişim
-https://x.com/suatayaz_
+
 Proje ile ilgili sorularınız için issue oluşturabilirsiniz.
