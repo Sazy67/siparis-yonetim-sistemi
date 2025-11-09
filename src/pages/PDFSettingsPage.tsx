@@ -11,6 +11,15 @@ interface PDFSettings {
   logoUrl?: string;
 }
 
+// Varsayılan ayarlar
+const DEFAULT_PDF_SETTINGS: PDFSettings = {
+  firmaAdi: 'Yusuf Altaş Metal Ltd Şti',
+  firmaAdres: 'İstanbul, Türkiye',
+  firmaTelefon: '0212 123 45 67',
+  firmaEmail: 'info@yusufaltas.com',
+  logoUrl: '/logo.png' // Public klasöründeki logo dosyası
+};
+
 const PDFSettingsPage = () => {
   const [settings, setSettings] = useState<PDFSettings>({
     firmaAdi: '',
@@ -24,6 +33,10 @@ const PDFSettingsPage = () => {
     const saved = localStorage.getItem('pdfSettings');
     if (saved) {
       setSettings(JSON.parse(saved));
+    } else {
+      // Varsayılan ayarları yükle
+      setSettings(DEFAULT_PDF_SETTINGS);
+      localStorage.setItem('pdfSettings', JSON.stringify(DEFAULT_PDF_SETTINGS));
     }
   }, []);
 

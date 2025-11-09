@@ -2,6 +2,15 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import type { Order, Cari } from '../types';
 
+// Varsayılan firma bilgileri
+const DEFAULT_FIRMA_INFO = {
+  firmaAdi: 'Yusuf Altaş Metal Ltd Şti',
+  firmaAdres: 'İstanbul, Türkiye',
+  firmaTelefon: '0212 123 45 67',
+  firmaEmail: 'info@yusufaltas.com',
+  logoUrl: '/logo.png'
+};
+
 class PDFService {
   // Türkçe karakter dönüşümü
   private turkishToLatin(text: string): string {
@@ -26,7 +35,7 @@ class PDFService {
 
     // Firma bilgilerini LocalStorage'dan al
     const pdfSettings = localStorage.getItem('pdfSettings');
-    const firmaInfo = pdfSettings ? JSON.parse(pdfSettings) : null;
+    const firmaInfo = pdfSettings ? JSON.parse(pdfSettings) : DEFAULT_FIRMA_INFO;
 
     // Header - En üstte, ortada
     doc.setFontSize(18);

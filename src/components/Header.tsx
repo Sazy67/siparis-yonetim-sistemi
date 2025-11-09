@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+// Varsayılan firma bilgileri
+const DEFAULT_FIRMA_INFO = {
+  firmaAdi: 'Yusuf Altaş Metal Ltd Şti',
+  logoUrl: '/logo.png'
+};
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
@@ -11,8 +17,12 @@ const Header = () => {
     const pdfSettings = localStorage.getItem('pdfSettings');
     if (pdfSettings) {
       const firmaInfo = JSON.parse(pdfSettings);
-      setLogoUrl(firmaInfo.logoUrl || null);
-      setFirmaAdi(firmaInfo.firmaAdi || 'Sipariş Yönetim');
+      setLogoUrl(firmaInfo.logoUrl || DEFAULT_FIRMA_INFO.logoUrl);
+      setFirmaAdi(firmaInfo.firmaAdi || DEFAULT_FIRMA_INFO.firmaAdi);
+    } else {
+      // Varsayılan değerleri kullan
+      setLogoUrl(DEFAULT_FIRMA_INFO.logoUrl);
+      setFirmaAdi(DEFAULT_FIRMA_INFO.firmaAdi);
     }
 
     // Storage değişikliklerini dinle
@@ -20,8 +30,12 @@ const Header = () => {
       const pdfSettings = localStorage.getItem('pdfSettings');
       if (pdfSettings) {
         const firmaInfo = JSON.parse(pdfSettings);
-        setLogoUrl(firmaInfo.logoUrl || null);
-        setFirmaAdi(firmaInfo.firmaAdi || 'Sipariş Yönetim');
+        setLogoUrl(firmaInfo.logoUrl || DEFAULT_FIRMA_INFO.logoUrl);
+        setFirmaAdi(firmaInfo.firmaAdi || DEFAULT_FIRMA_INFO.firmaAdi);
+      } else {
+        // Varsayılan değerleri kullan
+        setLogoUrl(DEFAULT_FIRMA_INFO.logoUrl);
+        setFirmaAdi(DEFAULT_FIRMA_INFO.firmaAdi);
       }
     };
 
