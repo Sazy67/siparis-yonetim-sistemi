@@ -1,0 +1,2 @@
+Logo dosyanızı buraya "logo.png" veya "logo.jpg" olarak koyun.
+Veya PDF Ayarları sayfasından logo URL'si girin.
